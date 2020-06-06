@@ -13,13 +13,18 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -42,8 +47,10 @@ public:
     QAction *action_Column;
     QAction *action_All;
     QAction *actionA_TOOL;
+    QAction *actionshow_Docker;
     QWidget *centralWidget;
     QTextBrowser *showTextBrowser;
+    QMdiArea *myMdiArea;
     QMenuBar *menuBar;
     QMenu *menu_File;
     QMenu *menuEdit;
@@ -51,6 +58,11 @@ public:
     QMenu *menuTools;
     QStatusBar *statusBar;
     QToolBar *mainToolBar;
+    QDockWidget *mydockerWidget;
+    QWidget *dockWidgetContents_4;
+    QPushButton *pushButton;
+    QToolButton *toolButton;
+    QTextEdit *textEdit;
 
     void setupUi(QMainWindow *testMainWindow)
     {
@@ -92,11 +104,16 @@ public:
         actionA_TOOL->setObjectName(QStringLiteral("actionA_TOOL"));
         actionA_TOOL->setCheckable(true);
         actionA_TOOL->setIcon(icon);
+        actionshow_Docker = new QAction(testMainWindow);
+        actionshow_Docker->setObjectName(QStringLiteral("actionshow_Docker"));
         centralWidget = new QWidget(testMainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         showTextBrowser = new QTextBrowser(centralWidget);
         showTextBrowser->setObjectName(QStringLiteral("showTextBrowser"));
-        showTextBrowser->setGeometry(QRect(510, 30, 256, 192));
+        showTextBrowser->setGeometry(QRect(540, 0, 81, 221));
+        myMdiArea = new QMdiArea(centralWidget);
+        myMdiArea->setObjectName(QStringLiteral("myMdiArea"));
+        myMdiArea->setGeometry(QRect(10, 10, 511, 491));
         testMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(testMainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -116,6 +133,21 @@ public:
         mainToolBar = new QToolBar(testMainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         testMainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        mydockerWidget = new QDockWidget(testMainWindow);
+        mydockerWidget->setObjectName(QStringLiteral("mydockerWidget"));
+        dockWidgetContents_4 = new QWidget();
+        dockWidgetContents_4->setObjectName(QStringLiteral("dockWidgetContents_4"));
+        pushButton = new QPushButton(dockWidgetContents_4);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(20, 250, 71, 28));
+        toolButton = new QToolButton(dockWidgetContents_4);
+        toolButton->setObjectName(QStringLiteral("toolButton"));
+        toolButton->setGeometry(QRect(40, 220, 47, 21));
+        textEdit = new QTextEdit(dockWidgetContents_4);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(20, 290, 81, 87));
+        mydockerWidget->setWidget(dockWidgetContents_4);
+        testMainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(2), mydockerWidget);
 
         menuBar->addAction(menu_File->menuAction());
         menuBar->addAction(menuEdit->menuAction());
@@ -125,6 +157,7 @@ public:
         menu_File->addAction(action_Open);
         menu_File->addAction(action_Save);
         menu_File->addAction(action_Save_As);
+        menu_File->addAction(actionshow_Docker);
         menuEdit->addAction(action_Cut);
         menuEdit->addAction(action_Copy);
         menuEdit->addAction(action_Paster);
@@ -165,11 +198,15 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionA_TOOL->setToolTip(QApplication::translate("testMainWindow", "\346\265\213\350\257\225", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
+        actionshow_Docker->setText(QApplication::translate("testMainWindow", "  &show Docker", Q_NULLPTR));
         menu_File->setTitle(QApplication::translate("testMainWindow", "&File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("testMainWindow", "Edit", Q_NULLPTR));
         menu_Select->setTitle(QApplication::translate("testMainWindow", "  &Select", Q_NULLPTR));
         menuTools->setTitle(QApplication::translate("testMainWindow", "Tools", Q_NULLPTR));
         mainToolBar->setWindowTitle(QApplication::translate("testMainWindow", "toolBar", Q_NULLPTR));
+        mydockerWidget->setWindowTitle(QApplication::translate("testMainWindow", "Tool Box", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("testMainWindow", "PushButton", Q_NULLPTR));
+        toolButton->setText(QApplication::translate("testMainWindow", "...", Q_NULLPTR));
     } // retranslateUi
 
 };

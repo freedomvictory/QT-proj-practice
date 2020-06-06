@@ -2,6 +2,8 @@
 #include "ui_testmainwindow.h"
 #include <QToolButton>
 #include <QLabel>
+#include <QTextEdit>
+#include <QMdiSubWindow>
 
 
 testMainWindow::testMainWindow(QWidget *parent) :
@@ -11,7 +13,7 @@ testMainWindow::testMainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //action_new send signal to funciton (action_new_show)
-    connect(ui->action_New, &QAction::triggered, this, &this->action_new_show ) ;
+    connect(ui->action_New, &QAction::triggered, this, &this->action_new_triggered ) ;
 
 
     //add an action to toolbar, and this action send singnal to a handler (an action just like a button in toolBar)
@@ -32,24 +34,34 @@ testMainWindow::~testMainWindow()
 {
     delete ui;
 }
-void testMainWindow::action_new_show(bool arg)
+void testMainWindow::action_new_triggered(bool arg)
 {
 
-    if(arg == true)
-    {
-        ui->showTextBrowser->setText("true");
-    }
-    else
-    {
-        ui->showTextBrowser->setText("false");
-    }
+
+    ui->showTextBrowser->setText("new file");
 
 
+    //create new txetEdit control
+    QTextEdit *edit = new QTextEdit(this);
 
+    //create sub windows, and 'edit' is central control of thease sub window
+    QMdiSubWindow *child = ui->myMdiArea->addSubWindow(edit);
+    child->setWindowTitle(tr("Multi documents editor sub window"));
+    child->show();
 }
 
 void testMainWindow::m_action_handle(bool arg)
 {
     ui->showTextBrowser->setText("this is toolBtn");
 
+}
+
+void testMainWindow::on_action_New_triggered()
+{
+
+}
+
+void testMainWindow::on_actionshow_Docker_triggered()
+{
+    ui->mydockerWidget->show();
 }
