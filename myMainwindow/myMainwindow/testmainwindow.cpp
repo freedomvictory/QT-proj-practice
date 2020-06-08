@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QTextEdit>
 #include <QMdiSubWindow>
+#include "myaction.h"
 
 
 testMainWindow::testMainWindow(QWidget *parent) :
@@ -27,6 +28,13 @@ testMainWindow::testMainWindow(QWidget *parent) :
     permanet->setFrameStyle(QFrame::Box | QFrame::Sunken);
     permanet->setText("www.qter.org");
     ui->statusBar->addPermanentWidget(permanet);
+
+    //AD OUR OWN ACTION
+    Myaction *action = new Myaction;
+    ui->menuCUSTOM->addAction(action);
+
+    connect(action, SIGNAL(getText(QString)), this, SLOT(setText(QString)));
+
 
 }
 
@@ -64,4 +72,9 @@ void testMainWindow::on_action_New_triggered()
 void testMainWindow::on_actionshow_Docker_triggered()
 {
     ui->mydockerWidget->show();
+}
+
+void testMainWindow::setText(const QString &string)
+{
+    ui->myTextEdit->setText(string); //set editor show string
 }

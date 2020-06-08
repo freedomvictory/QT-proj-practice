@@ -19,7 +19,7 @@
      <rect>
       <x>540</x>
       <y>0</y>
-      <width>81</width>
+      <width>201</width>
       <height>221</height>
      </rect>
     </property>
@@ -31,6 +31,26 @@
       <y>10</y>
       <width>511</width>
       <height>491</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="myTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>240</y>
+      <width>171</width>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>430</y>
+      <width>131</width>
+      <height>21</height>
      </rect>
     </property>
    </widget>
@@ -82,9 +102,15 @@
     <addaction name="action_Recalculate"/>
     <addaction name="action_Sort"/>
    </widget>
+   <widget class="QMenu" name="menuCUSTOM">
+    <property name="title">
+     <string>CUSTOM</string>
+    </property>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menuEdit"/>
    <addaction name="menuTools"/>
+   <addaction name="menuCUSTOM"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">

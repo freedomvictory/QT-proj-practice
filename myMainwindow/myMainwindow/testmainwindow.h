@@ -24,10 +24,13 @@ private slots:
    void action_new_triggered(bool);
    void m_action_handle(bool);
 
-   vod on_action_New_triggered();
+   void on_action_New_triggered();
 
    /*menu item : file-> show docker */
    void on_actionshow_Docker_triggered();
+
+   /*custom menu*/
+   void setText(const QString &string);
 };
 
 #endif // TESTMAINWINDOW_H

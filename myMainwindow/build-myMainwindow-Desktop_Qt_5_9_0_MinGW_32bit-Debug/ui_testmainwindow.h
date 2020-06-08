@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMdiArea>
 #include <QtWidgets/QMenu>
@@ -51,11 +52,14 @@ public:
     QWidget *centralWidget;
     QTextBrowser *showTextBrowser;
     QMdiArea *myMdiArea;
+    QTextEdit *myTextEdit;
+    QLineEdit *lineEdit;
     QMenuBar *menuBar;
     QMenu *menu_File;
     QMenu *menuEdit;
     QMenu *menu_Select;
     QMenu *menuTools;
+    QMenu *menuCUSTOM;
     QStatusBar *statusBar;
     QToolBar *mainToolBar;
     QDockWidget *mydockerWidget;
@@ -110,10 +114,16 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         showTextBrowser = new QTextBrowser(centralWidget);
         showTextBrowser->setObjectName(QStringLiteral("showTextBrowser"));
-        showTextBrowser->setGeometry(QRect(540, 0, 81, 221));
+        showTextBrowser->setGeometry(QRect(540, 0, 201, 221));
         myMdiArea = new QMdiArea(centralWidget);
         myMdiArea->setObjectName(QStringLiteral("myMdiArea"));
         myMdiArea->setGeometry(QRect(10, 10, 511, 491));
+        myTextEdit = new QTextEdit(centralWidget);
+        myTextEdit->setObjectName(QStringLiteral("myTextEdit"));
+        myTextEdit->setGeometry(QRect(540, 240, 171, 151));
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(560, 430, 131, 21));
         testMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(testMainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -126,6 +136,8 @@ public:
         menu_Select->setObjectName(QStringLiteral("menu_Select"));
         menuTools = new QMenu(menuBar);
         menuTools->setObjectName(QStringLiteral("menuTools"));
+        menuCUSTOM = new QMenu(menuBar);
+        menuCUSTOM->setObjectName(QStringLiteral("menuCUSTOM"));
         testMainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(testMainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -152,6 +164,7 @@ public:
         menuBar->addAction(menu_File->menuAction());
         menuBar->addAction(menuEdit->menuAction());
         menuBar->addAction(menuTools->menuAction());
+        menuBar->addAction(menuCUSTOM->menuAction());
         menu_File->addSeparator();
         menu_File->addAction(action_New);
         menu_File->addAction(action_Open);
@@ -203,6 +216,7 @@ public:
         menuEdit->setTitle(QApplication::translate("testMainWindow", "Edit", Q_NULLPTR));
         menu_Select->setTitle(QApplication::translate("testMainWindow", "  &Select", Q_NULLPTR));
         menuTools->setTitle(QApplication::translate("testMainWindow", "Tools", Q_NULLPTR));
+        menuCUSTOM->setTitle(QApplication::translate("testMainWindow", "CUSTOM", Q_NULLPTR));
         mainToolBar->setWindowTitle(QApplication::translate("testMainWindow", "toolBar", Q_NULLPTR));
         mydockerWidget->setWindowTitle(QApplication::translate("testMainWindow", "Tool Box", Q_NULLPTR));
         pushButton->setText(QApplication::translate("testMainWindow", "PushButton", Q_NULLPTR));
