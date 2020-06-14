@@ -58,7 +58,7 @@ OBJECTS       = release/main.o \
 		release/moc_testmainwindow.o \
 		release/moc_myaction.o
 
-DIST          =  ../myMainwindow/testmainwindow.h \
+DIST          = readme.md ../myMainwindow/testmainwindow.h \
 		../myMainwindow/myaction.h ../myMainwindow/main.cpp \
 		../myMainwindow/testmainwindow.cpp \
 		../myMainwindow/myaction.cpp
@@ -609,6 +609,12 @@ release/testmainwindow.o: ../myMainwindow/testmainwindow.cpp ../myMainwindow/tes
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qstyle.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qtabbar.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/QLineEdit \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qlineedit.h \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextcursor.h \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextformat.h \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qpen.h \
+		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextoption.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/QMdiArea \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qmdiarea.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/QMenu \
@@ -624,10 +630,6 @@ release/testmainwindow.o: ../myMainwindow/testmainwindow.cpp ../myMainwindow/tes
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qtextbrowser.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qtextedit.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextdocument.h \
-		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextoption.h \
-		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextcursor.h \
-		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qtextformat.h \
-		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtGui/qpen.h \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/QTextEdit \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/QToolBar \
 		D:/Qt/Qt5.9.0/5.9/mingw53_32/include/QtWidgets/qtoolbar.h \

@@ -31,6 +31,15 @@ private slots:
 
    /*custom menu*/
    void setText(const QString &string);
+
+   /*text block function test -- a menu action handler when trigger */
+   void showTextFrame();
+
+    /*show text block*/
+   void showTextBlock();
+
+   /*set font and text show format*/
+   void setTextFont(bool checked);
 };
 
 #endif // TESTMAINWINDOW_H

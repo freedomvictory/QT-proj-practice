@@ -37,3 +37,6 @@ FORMS += \
 
 RESOURCES += \
     myres.qrc
+
+DISTFILES += \
+    readme.md

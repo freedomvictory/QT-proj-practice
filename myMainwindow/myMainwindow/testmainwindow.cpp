@@ -5,6 +5,8 @@
 #include <QTextEdit>
 #include <QMdiSubWindow>
 #include "myaction.h"
+#include <QTextFrame>
+#include <QDebug>
 
 
 testMainWindow::testMainWindow(QWidget *parent) :
@@ -30,10 +32,50 @@ testMainWindow::testMainWindow(QWidget *parent) :
     ui->statusBar->addPermanentWidget(permanet);
 
     //AD OUR OWN ACTION
+    //docuemnt()
     Myaction *action = new Myaction;
     ui->menuCUSTOM->addAction(action);
 
     connect(action, SIGNAL(getText(QString)), this, SLOT(setText(QString)));
+
+    //full text doucument structure == <qt creator>
+    QTextDocument *document = ui->myTextEdit->document(); //got `document` object
+    QTextFrame *rootFrame = document->rootFrame();        //got root frame
+
+    QTextFrameFormat format;                              //create frame format
+    format.setBorderBrush(Qt::red);
+    format.setBorder(3);
+    rootFrame->setFrameFormat(format);                    //set frame format
+
+    /******************************/
+    //cursor
+    QTextFrameFormat frameFormat;
+    frameFormat.setBackground(Qt::lightGray);
+    frameFormat.setMargin(10);
+    frameFormat.setPadding(5);
+    frameFormat.setBorder(2);
+    frameFormat.setBorderStyle(QTextFrameFormat::BorderStyle_Dotted);
+
+    QTextCursor cursor = ui->myTextEdit->textCursor();
+    cursor.insertFrame(frameFormat);
+
+    //test textBlock ,add a action on toolBar
+    QAction *action_textFrame = new QAction(tr("&Frame"), this);
+    connect(action_textFrame, &QAction::triggered, this, &testMainWindow::showTextFrame);
+    ui->mainToolBar->addAction(action_textFrame);
+
+    // add an new action on mainToolBar
+    QAction *action_textBlock = new QAction(tr("Block"), this);
+    connect(action_textBlock, &QAction::triggered, this, &testMainWindow::showTextBlock);
+    ui->mainToolBar->addAction(action_textBlock);
+
+    //add an new acition on mainToolBar , it is used for set Text Font
+    QAction *action_font = new QAction(tr("Font"), this);
+    action_font->setCheckable(true);
+    connect(action_font, &QAction::toggled, this, &testMainWindow::setTextFont);
+    ui->mainToolBar->addAction(action_font);
+
+
 
 
 }
@@ -58,6 +100,7 @@ void testMainWindow::action_new_triggered(bool arg)
     child->show();
 }
 
+
 void testMainWindow::m_action_handle(bool arg)
 {
     ui->showTextBrowser->setText("this is toolBtn");
@@ -77,4 +120,74 @@ void testMainWindow::on_actionshow_Docker_triggered()
 void testMainWindow::setText(const QString &string)
 {
     ui->myTextEdit->setText(string); //set editor show string
+}
+
+
+\
+void testMainWindow::showTextFrame()
+{
+    QTextDocument *document = ui->myTextEdit->document();
+    QTextFrame *frame = document->rootFrame();
+
+    QTextFrame::iterator it;
+    for(it = frame->begin(); !(it.atEnd()); ++it)
+    {
+        QTextFrame *childFrame = it.currentFrame();
+        QTextBlock childBlock = it.currentBlock();
+
+        if(childFrame)
+        {
+            qDebug() << "frame";
+        }
+        if(childBlock.isValid())
+        {
+            qDebug() << "block:" << childBlock.text();
+        }
+    }
+}
+
+void testMainWindow::showTextBlock()
+{
+    QTextDocument *document = ui->myTextEdit->document();
+    QTextBlock block = document->firstBlock();
+
+    for(int i = 0; i < document->blockCount(); i++)\
+    {
+        qDebug() << tr("Text block : %1 , Text block first line number: %2, length: %3, content ")
+                    .arg(i).arg(block.firstLineNumber()).arg(block.length())
+                 << block.text();
+
+        block = block.next();
+    }
+
+
+}
+
+void testMainWindow::setTextFont(bool checked)
+{
+
+    if(checked)
+    {
+        QTextCursor cursor = ui->myTextEdit->textCursor();
+        QTextBlockFormat blockFormat;
+        blockFormat.setAlignment(Qt::AlignCenter);
+        cursor.insertBlock(blockFormat);
+
+        QTextCharFormat charFormat;
+        charFormat.setBackground(Qt::lightGray);
+        charFormat.setForeground(Qt::blue);
+        charFormat.setFont(QFont(tr("宋体"), 12, QFont::Bold, true));
+        charFormat.setFontUnderline(true);
+
+        cursor.setCharFormat(charFormat);
+        cursor.insertText(tr("测试字体"));
+    }
+    else
+    {
+        //TODO: resume default font format
+    }
+
+
+
+
 }
