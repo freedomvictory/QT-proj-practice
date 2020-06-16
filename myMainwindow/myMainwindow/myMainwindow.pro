@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         testmainwindow.cpp \
-    myaction.cpp
+    myaction.cpp \
+    mysyntaxhighlighter.cpp
 
 HEADERS += \
         testmainwindow.h \
-    myaction.h
+    myaction.h \
+    mysyntaxhighlighter.h
 
 FORMS += \
         testmainwindow.ui

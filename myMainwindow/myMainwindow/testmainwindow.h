@@ -5,6 +5,7 @@
 
 class QLineEdit;
 class QDialog;
+class MySyntaxHighlighter;
 
 
 namespace Ui {
@@ -27,6 +28,8 @@ private:
 
     QLineEdit * find_dialog_lineEdit;
     QDialog * find_dialog;
+
+    MySyntaxHighlighter *highlighter;
 
 private slots:
 

@@ -11,6 +11,8 @@
 #include <QDialog>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include "mysyntaxhighlighter.h"
+
 
 testMainWindow::testMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -96,6 +98,10 @@ testMainWindow::testMainWindow(QWidget *parent) :
     layout->addWidget(find_dialog_lineEdit);
     layout->addWidget(find_next_button);
     find_dialog->setLayout(layout);
+
+    // add highlighter
+    highlighter = new MySyntaxHighlighter(ui->myTextEdit->document());
+    ui->myTextEdit->append(tr("<h1><font color = red>USE HTML</font></h1 >"));
 
 }
 

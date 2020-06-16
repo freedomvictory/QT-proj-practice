@@ -117,13 +117,13 @@ public:
         showTextBrowser->setGeometry(QRect(540, 0, 201, 221));
         myMdiArea = new QMdiArea(centralWidget);
         myMdiArea->setObjectName(QStringLiteral("myMdiArea"));
-        myMdiArea->setGeometry(QRect(10, 10, 511, 491));
+        myMdiArea->setGeometry(QRect(10, 10, 311, 491));
         myTextEdit = new QTextEdit(centralWidget);
         myTextEdit->setObjectName(QStringLiteral("myTextEdit"));
-        myTextEdit->setGeometry(QRect(540, 240, 171, 151));
+        myTextEdit->setGeometry(QRect(330, 240, 411, 211));
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(560, 430, 131, 21));
+        lineEdit->setGeometry(QRect(560, 470, 131, 21));
         testMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(testMainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
