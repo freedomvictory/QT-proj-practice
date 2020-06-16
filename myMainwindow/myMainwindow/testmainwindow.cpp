@@ -7,7 +7,10 @@
 #include "myaction.h"
 #include <QTextFrame>
 #include <QDebug>
-
+#include <QLineEdit>
+#include <QDialog>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 testMainWindow::testMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -76,7 +79,23 @@ testMainWindow::testMainWindow(QWidget *parent) :
     ui->mainToolBar->addAction(action_font);
 
 
+    /**********************find dialog********************************************/
 
+    //add a new action on menuBar
+    QAction *action_textFind = new QAction(tr("FIND"), this);
+    connect(action_textFind, &QAction::triggered, this, &testMainWindow::textFind);
+    ui->mainToolBar->addAction(action_textFind);
+
+    //create find dialog
+    find_dialog = new QDialog(this);
+    find_dialog_lineEdit = new QLineEdit(find_dialog);
+    QPushButton *find_next_button = new QPushButton(find_dialog);
+    find_next_button->setText(tr("find next"));
+    connect(find_next_button, &QPushButton::clicked, this, &testMainWindow::findNext);
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(find_dialog_lineEdit);
+    layout->addWidget(find_next_button);
+    find_dialog->setLayout(layout);
 
 }
 
@@ -186,8 +205,31 @@ void testMainWindow::setTextFont(bool checked)
     {
         //TODO: resume default font format
     }
+}
 
 
+void testMainWindow::textFind()
+{
+
+    find_dialog->show();
+}
+
+
+void testMainWindow::findNext()
+{
+
+    QString string = find_dialog_lineEdit->text();
+
+    bool isfind = ui->myTextEdit->find(string, QTextDocument::FindBackward);
+
+    if(isfind)
+    {
+        qDebug() << tr("line : %1, column : %2")
+                    .arg(ui->myTextEdit->textCursor().blockNumber())
+                    .arg(ui->myTextEdit->textCursor().columnNumber());
+
+    }
 
 
 }
+
