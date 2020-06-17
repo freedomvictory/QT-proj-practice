@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "mysyntaxhighlighter.h"
+#include <QMimeData>
 
 
 testMainWindow::testMainWindow(QWidget *parent) :
@@ -102,6 +103,11 @@ testMainWindow::testMainWindow(QWidget *parent) :
     // add highlighter
     highlighter = new MySyntaxHighlighter(ui->myTextEdit->document());
     ui->myTextEdit->append(tr("<h1><font color = red>USE HTML</font></h1 >"));
+
+    /*got total window drop event*/
+    setCentralWidget(ui->myTextEdit);
+    ui->myTextEdit->setAcceptDrops(false);
+    setAcceptDrops(true);
 
 }
 
@@ -239,3 +245,42 @@ void testMainWindow::findNext()
 
 }
 
+void testMainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    qDebug() << "drogEnterEvent\n";
+    if(event->mimeData()->hasUrls())
+    {
+        event->acceptProposedAction();
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+
+void testMainWindow::dropEvent(QDropEvent *event)
+{
+    const QMimeData *mimeData = event->mimeData();
+    if(mimeData->hasUrls())
+    {
+        QList<QUrl> urlList = mimeData->urls();
+        QString fileName = urlList.at(0).toLocalFile();
+
+        if(!fileName.isEmpty())
+        {
+            QFile file(fileName);
+            if(!file.open(QIODevice::ReadOnly))
+            {
+                return;
+            }
+            QTextStream in(&file);
+            qDebug() << "hello,world\n";
+            ui->myTextEdit->setText(in.readAll());
+        }
+
+    }
+
+
+
+
+}
