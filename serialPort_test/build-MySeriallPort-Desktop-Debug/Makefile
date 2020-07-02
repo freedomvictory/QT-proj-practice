@@ -52,13 +52,11 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../MySeriallPort/TESTtestserailport.cpp \
-		../MySeriallPort/main.cpp \
-		../MySeriallPort/testserailport.cpp moc_testserailport.cpp
-OBJECTS       = TESTtestserailport.o \
-		main.o \
-		testserailport.o \
-		moc_testserailport.o
+SOURCES       = ../MySeriallPort/TestMyserialPort.cpp \
+		../MySeriallPort/myserialPort.cpp moc_myserialPort.cpp
+OBJECTS       = TestMyserialPort.o \
+		myserialPort.o \
+		moc_myserialPort.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -356,9 +354,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../MySeriallPort/MySeriallPort.pro ../MySeriallPort/testserailport.h ../MySeriallPort/TESTtestserailport.cpp \
-		../MySeriallPort/main.cpp \
-		../MySeriallPort/testserailport.cpp
+		../MySeriallPort/MySeriallPort.pro ../MySeriallPort/myserialPort.h ../MySeriallPort/TestMyserialPort.cpp \
+		../MySeriallPort/myserialPort.cpp
 QMAKE_TARGET  = MySeriallPort
 DESTDIR       = 
 TARGET        = MySeriallPort
@@ -982,8 +979,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MySeriallPort/testserailport.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MySeriallPort/TESTtestserailport.cpp ../MySeriallPort/main.cpp ../MySeriallPort/testserailport.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MySeriallPort/myserialPort.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MySeriallPort/TestMyserialPort.cpp ../MySeriallPort/myserialPort.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1015,24 +1012,24 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_testserailport.cpp
+compiler_moc_header_make_all: moc_myserialPort.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_testserailport.cpp
-moc_testserailport.cpp: ../MySeriallPort/testserailport.h \
+	-$(DEL_FILE) moc_myserialPort.cpp
+moc_myserialPort.cpp: ../MySeriallPort/myserialPort.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/build-MySeriallPort-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/MySeriallPort -I/usr/include/qt -I/usr/include/qt/QtSerialPort -I/usr/include/qt/QtTest -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../MySeriallPort/testserailport.h -o moc_testserailport.cpp
+	/usr/bin/moc $(DEFINES) --include /home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/build-MySeriallPort-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/MySeriallPort -I/usr/include/qt -I/usr/include/qt/QtSerialPort -I/usr/include/qt/QtTest -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../MySeriallPort/myserialPort.h -o moc_myserialPort.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
-compiler_moc_source_make_all: TESTtestserailport.moc
+compiler_moc_source_make_all: TestMyserialPort.moc
 compiler_moc_source_clean:
-	-$(DEL_FILE) TESTtestserailport.moc
-TESTtestserailport.moc: ../MySeriallPort/TESTtestserailport.cpp \
-		../MySeriallPort/testserailport.h \
+	-$(DEL_FILE) TestMyserialPort.moc
+TestMyserialPort.moc: ../MySeriallPort/TestMyserialPort.cpp \
+		../MySeriallPort/myserialPort.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/build-MySeriallPort-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/MySeriallPort -I/usr/include/qt -I/usr/include/qt/QtSerialPort -I/usr/include/qt/QtTest -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../MySeriallPort/TESTtestserailport.cpp -o TESTtestserailport.moc
+	/usr/bin/moc $(DEFINES) --include /home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/build-MySeriallPort-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/victory/Documents/code/c++/qt-proj/QT-proj-practice/serialPort_test/MySeriallPort -I/usr/include/qt -I/usr/include/qt/QtSerialPort -I/usr/include/qt/QtTest -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../MySeriallPort/TestMyserialPort.cpp -o TestMyserialPort.moc
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1044,17 +1041,14 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_mo
 
 ####### Compile
 
-TESTtestserailport.o: ../MySeriallPort/TESTtestserailport.cpp ../MySeriallPort/testserailport.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TESTtestserailport.o ../MySeriallPort/TESTtestserailport.cpp
+TestMyserialPort.o: ../MySeriallPort/TestMyserialPort.cpp ../MySeriallPort/myserialPort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TestMyserialPort.o ../MySeriallPort/TestMyserialPort.cpp
 
-main.o: ../MySeriallPort/main.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MySeriallPort/main.cpp
+myserialPort.o: ../MySeriallPort/myserialPort.cpp ../MySeriallPort/myserialPort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myserialPort.o ../MySeriallPort/myserialPort.cpp
 
-testserailport.o: ../MySeriallPort/testserailport.cpp ../MySeriallPort/testserailport.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testserailport.o ../MySeriallPort/testserailport.cpp
-
-moc_testserailport.o: moc_testserailport.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_testserailport.o moc_testserailport.cpp
+moc_myserialPort.o: moc_myserialPort.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_myserialPort.o moc_myserialPort.cpp
 
 ####### Install
 

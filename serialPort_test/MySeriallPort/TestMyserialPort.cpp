@@ -1,18 +1,21 @@
+//! [0]
 #include <QtTest/QTest>
-#include "testserailport.h"
+#include "myserialPort.h"
 #include <QDebug>
 #include <QThread>
 
 
-class TESTtestserailport: public QObject
+
+class TestMyserialPort: public QObject
 {
     Q_OBJECT
-
 private slots:
     void open_read_serial();
 };
+//! [0]
 
-void TESTtestserailport::open_read_serial()
+//! [1]
+void TestMyserialPort::open_read_serial()
 {
     TestSerailPort *myserial = new TestSerailPort("COM8");
 
@@ -25,10 +28,12 @@ void TESTtestserailport::open_read_serial()
     {
         qDebug() << "Fail to open serial";
     }
+    QCOMPARE("HELLO", "hello");
 }
+//! [1]
 
 
-//! [3]
-QTEST_MAIN(TESTtestserailport)
-#include "moc_predefs.h"
-//! [3]
+//! [2]
+QTEST_MAIN(TestMyserialPort)
+#include "testmyserialport.moc"
+//! [2]

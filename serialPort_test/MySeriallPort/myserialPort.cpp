@@ -1,5 +1,6 @@
-#include "testserailport.h"
+#include "myserialPort.h"
 #include <QObject>
+#include <QCoreApplication>
 
 
 
@@ -14,6 +15,7 @@ TestSerailPort::TestSerailPort(
 {
    //TODO:
    // Complete it !
+   qDebug() << name << stringBaudRate << stringBits << stringParity << stringStopBits << stringFlowControl;
 
 }
 TestSerailPort::TestSerailPort(
@@ -41,7 +43,7 @@ TestSerailPort::TestSerailPort(
     m_option->stopBits = sbits;
     m_option->flowControl = flow;
 
-    QObject::connect(m_serial, &QSerialPort::readyRead, this, &TestSerailPort::readData);
+    connect(m_serial, &QSerialPort::readyRead, this, &TestSerailPort::readData);
 
 
 }
@@ -57,8 +59,7 @@ TestSerailPort::~TestSerailPort()
 }
 
 bool TestSerailPort::open(){
-   m_serial->open(QIODevice::ReadWrite);
-
+    return m_serial->open(QIODevice::ReadWrite);
 };
 void TestSerailPort::close(){
     if(m_serial->isOpen())

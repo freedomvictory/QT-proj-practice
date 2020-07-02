@@ -4,10 +4,13 @@
 #include <QtSerialPort/QSerialPort>
 #include <QDebug>
 #include <QObject>
+#include <QByteArray>
+#include <QTimer>
+#include <QTextStream>
 
 
 struct SerialOption;
-class TestSerailPort
+class TestSerailPort : public QObject
 {
     Q_OBJECT
 
