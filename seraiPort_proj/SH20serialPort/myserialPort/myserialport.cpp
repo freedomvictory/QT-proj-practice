@@ -11,26 +11,12 @@ MyserialPort::MyserialPort(QObject *parent) : QObject(parent)
 }
 
 MyserialPort::MyserialPort(
-                               QString name,
-                               QString stringBaudRate,
-                               QString stringBits,
-                               QString stringParity,
-                               QString stringStopBits,
-                               QString stringFlowControl
-                               )
-{
-   //TODO:
-   // Complete it !
-   qDebug() << name << stringBaudRate << stringBits << stringParity << stringStopBits << stringFlowControl;
-
-}
-MyserialPort::MyserialPort(
-               QString& name,
-               qint32 baudRate,
-               QSerialPort::DataBits dbits,
-               QSerialPort::Parity parity,
-               QSerialPort::StopBits sbits,
-               QSerialPort::FlowControl flow)
+        QString name,
+        qint32 baudRate,
+        QSerialPort::DataBits dbits,
+        QSerialPort::Parity parity,
+        QSerialPort::StopBits sbits,
+        QSerialPort::FlowControl flow, QObject *parent) : QObject(parent)
 {
     /*set serial message*/
     m_serial->setPortName(name);
@@ -41,6 +27,8 @@ MyserialPort::MyserialPort(
     m_serial->setFlowControl(flow);
 
 
+    struct SerialOption so;
+    m_option = &so;
     /*save serial message*/
     m_option->name = name;
     m_option->baudRate = baudRate;
@@ -58,12 +46,6 @@ MyserialPort::MyserialPort(
 MyserialPort::~MyserialPort()
 {
 
-    /*relase m_option*/
-    if(m_option)
-    {
-        delete m_option;
-        m_option = nullptr;
-    }
     /*relase m_serial*/
     if(m_serial)
     {
@@ -74,7 +56,7 @@ MyserialPort::~MyserialPort()
 }
 
 bool MyserialPort::open(){
-    return m_serial->open(QIODevice::ReadWrite);
+    return m_serial->open(QIODevice::ReadOnly);
 }
 void MyserialPort::close(){
     if(m_serial->isOpen())
@@ -84,8 +66,12 @@ void MyserialPort::close(){
 }
 void MyserialPort::readData(){
 
-    QByteArray data = m_serial->readAll();
-    qDebug() << "data:" << data;
+    qDebug() << "recv data\n";
+    qDebug() << m_serial->readAll();
+
+
+
+
 
 
 }

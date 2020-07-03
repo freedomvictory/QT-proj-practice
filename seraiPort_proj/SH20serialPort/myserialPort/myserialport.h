@@ -13,22 +13,13 @@ class MyserialPort : public QObject
 public:
     explicit MyserialPort(QObject *parent = nullptr);
 
-public:
-
     MyserialPort(
                    QString name,
-                   QString stringBaudRate = "9600",
-                   QString stringBits = "8",
-                   QString stringParity = "None",
-                   QString stringStopBits = "1",
-                   QString stringFlowControl = "None");
-    MyserialPort(
-                   QString& name,
                    qint32 baudRate = 9600,
                    QSerialPort::DataBits dbits = QSerialPort::Data8,
                    QSerialPort::Parity parity = QSerialPort::NoParity,
                    QSerialPort::StopBits sbits = QSerialPort::OneStop,
-                   QSerialPort::FlowControl flow = QSerialPort::NoFlowControl);
+                   QSerialPort::FlowControl flow = QSerialPort::NoFlowControl, QObject *parent = nullptr);
 
     ~MyserialPort();
 
@@ -45,7 +36,7 @@ private slots:
 private:
 
     /*serial port*/
-    QSerialPort *m_serial;
+    QSerialPort *m_serial = new QSerialPort();
     SerialOption *m_option;
 
 

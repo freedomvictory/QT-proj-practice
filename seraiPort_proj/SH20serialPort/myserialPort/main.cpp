@@ -1,12 +1,14 @@
 #include <QCoreApplication>
 #include "myserialport.h"
 #include <QDebug>
-#include <QThread>
+#include <QFile>
+
 
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    QTextStream qtin(stdin);
 
 
     MyserialPort *sh20_device = new MyserialPort("/dev/ttyUSB0");
@@ -14,18 +16,20 @@ int main(int argc, char *argv[])
     {
         qDebug() << "open success";
 
-        qDebug() << "sleep call ,delay 30 seconds";
-        QThread::sleep(30);
+
+
     }
     else
     {
        qDebug() << "open fail";
     }
 
+    QString line = qtin.readLine();
+    /*
     sh20_device->close();
     delete sh20_device;
     sh20_device = nullptr;
-
+    */
 
     return a.exec();
 }
