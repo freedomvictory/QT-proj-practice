@@ -3,6 +3,8 @@
 #include <QObject>
 #include <QByteArray>
 #include <QCoreApplication>
+#include <QString>
+
 
 
 MyserialPort::MyserialPort(QObject *parent) : QObject(parent)
@@ -40,39 +42,56 @@ MyserialPort::MyserialPort(
     connect(m_serial, &QSerialPort::readyRead, this, &MyserialPort::readData);
     connect(m_serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error), this, &MyserialPort::handleError);
 
+    connect(m_timer, &QTimer::timeout, this, &MyserialPort::timerUpdate);
 
 }
 
 MyserialPort::~MyserialPort()
 {
-
     /*relase m_serial*/
-    if(m_serial)
-    {
-        close();
-        delete m_serial;
-        m_serial = nullptr;
-    }
+    delete m_serial;
+    m_serial = nullptr;
+
+    delete m_timer;
+    m_timer = nullptr;
+
+    delete m_readData;
+    m_readData = nullptr;
 }
 
 bool MyserialPort::open(){
-    return m_serial->open(QIODevice::ReadOnly);
+
+    bool open_status = true;
+
+    open_status = m_serial->open(QIODevice::ReadOnly);
+    //open the timer
+    if(open_status)
+    {
+        m_timer->start(5000);
+    }
+    //return the status
+    return open_status;
 }
 void MyserialPort::close(){
     if(m_serial->isOpen())
     {
         m_serial->close();
+        m_timer->stop();
     }
 }
 void MyserialPort::readData(){
 
-    qDebug() << "recv data\n";
-    qDebug() << m_serial->readAll();
+    qDebug() << "recv data=====================\n";
 
+    m_readData->append(m_serial->readAll());
+}
 
+void MyserialPort::timerUpdate()
+{
 
-
-
+    qDebug() << "timer Update";
+    qDebug() << "ByteArray len = " << m_readData->length();
+    m_readData->clear();
 
 }
 

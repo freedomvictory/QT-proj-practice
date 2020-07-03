@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QtSerialPort/QSerialPort>
+#include <QTextCodec>
+#include <QTimer>
 
 
 struct SerialOption;
@@ -33,11 +35,15 @@ private slots:
     void readData();
     void handleError(QSerialPort::SerialPortError error);
 
+    void timerUpdate();
+
 private:
 
     /*serial port*/
     QSerialPort *m_serial = new QSerialPort();
     SerialOption *m_option;
+    QTimer *m_timer = new QTimer(this);
+    QByteArray *m_readData = new QByteArray();
 
 
 };
