@@ -1,5 +1,4 @@
 TEMPLATE = subdirs
 
-SUBDIRS += \
-    TESTmyserialPort \
-    myserialPort
+SUBDIRS += myserialPort
+

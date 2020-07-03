@@ -40,7 +40,6 @@ public:
 private slots:
 
     void readData();
-    void writeData(const QByteArray &data);
     void handleError(QSerialPort::SerialPortError error);
 
 private:
