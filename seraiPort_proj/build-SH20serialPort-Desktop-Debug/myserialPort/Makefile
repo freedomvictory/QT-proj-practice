@@ -52,10 +52,14 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../SH20serialPort/myserialPort/main.cpp \
-		../../SH20serialPort/myserialPort/myserialport.cpp moc_myserialport.cpp
-OBJECTS       = main.o \
+SOURCES       = ../../SH20serialPort/myserialPort/logmessage.cpp \
+		../../SH20serialPort/myserialPort/main.cpp \
+		../../SH20serialPort/myserialPort/myserialport.cpp \
+		../../SH20serialPort/myserialPort/qlogger.cpp moc_myserialport.cpp
+OBJECTS       = logmessage.o \
+		main.o \
 		myserialport.o \
+		qlogger.o \
 		moc_myserialport.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -353,8 +357,11 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../../SH20serialPort/myserialPort/myserialPort.pro ../../SH20serialPort/myserialPort/myserialport.h ../../SH20serialPort/myserialPort/main.cpp \
-		../../SH20serialPort/myserialPort/myserialport.cpp
+		../../SH20serialPort/myserialPort/myserialPort.pro ../../SH20serialPort/myserialPort/myserialport.h \
+		../../SH20serialPort/myserialPort/qlogger.h ../../SH20serialPort/myserialPort/logmessage.cpp \
+		../../SH20serialPort/myserialPort/main.cpp \
+		../../SH20serialPort/myserialPort/myserialport.cpp \
+		../../SH20serialPort/myserialPort/qlogger.cpp
 QMAKE_TARGET  = myserialPort
 DESTDIR       = 
 TARGET        = myserialPort
@@ -976,8 +983,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../SH20serialPort/myserialPort/myserialport.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../SH20serialPort/myserialPort/main.cpp ../../SH20serialPort/myserialPort/myserialport.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../SH20serialPort/myserialPort/myserialport.h ../../SH20serialPort/myserialPort/qlogger.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../SH20serialPort/myserialPort/logmessage.cpp ../../SH20serialPort/myserialPort/main.cpp ../../SH20serialPort/myserialPort/myserialport.cpp ../../SH20serialPort/myserialPort/qlogger.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1030,11 +1037,19 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-main.o: ../../SH20serialPort/myserialPort/main.cpp ../../SH20serialPort/myserialPort/myserialport.h
+logmessage.o: ../../SH20serialPort/myserialPort/logmessage.cpp ../../SH20serialPort/myserialPort/qlogger.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logmessage.o ../../SH20serialPort/myserialPort/logmessage.cpp
+
+main.o: ../../SH20serialPort/myserialPort/main.cpp ../../SH20serialPort/myserialPort/myserialport.h \
+		../../SH20serialPort/myserialPort/qlogger.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../SH20serialPort/myserialPort/main.cpp
 
-myserialport.o: ../../SH20serialPort/myserialPort/myserialport.cpp ../../SH20serialPort/myserialPort/myserialport.h
+myserialport.o: ../../SH20serialPort/myserialPort/myserialport.cpp ../../SH20serialPort/myserialPort/myserialport.h \
+		../../SH20serialPort/myserialPort/qlogger.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myserialport.o ../../SH20serialPort/myserialPort/myserialport.cpp
+
+qlogger.o: ../../SH20serialPort/myserialPort/qlogger.cpp ../../SH20serialPort/myserialPort/qlogger.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qlogger.o ../../SH20serialPort/myserialPort/qlogger.cpp
 
 moc_myserialport.o: moc_myserialport.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_myserialport.o moc_myserialport.cpp

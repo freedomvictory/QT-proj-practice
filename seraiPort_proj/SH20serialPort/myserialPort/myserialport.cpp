@@ -4,8 +4,10 @@
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QString>
+#include <iostream>
+#include "qlogger.h"
 
-
+extern Qlogger myQlogger;
 
 MyserialPort::MyserialPort(QObject *parent) : QObject(parent)
 {
@@ -81,7 +83,7 @@ void MyserialPort::close(){
 }
 void MyserialPort::readData(){
 
-    qDebug() << "recv data=====================\n";
+    //qDebug() << "recv data=====================\n";
 
     m_readData->append(m_serial->readAll());
 }
@@ -90,7 +92,15 @@ void MyserialPort::timerUpdate()
 {
 
     qDebug() << "timer Update";
-    qDebug() << "ByteArray len = " << m_readData->length();
+
+    qDebug() << "ByteString: " << m_readData->data();
+    //qDebug() << "ByteArray : " << m_readData->toHex(':');
+    //qDebug() << "ByteArray len = " << m_readData->length();
+    //myQlogger.WriteString(m_readData->data());
+
+
+
+
     m_readData->clear();
 
 }

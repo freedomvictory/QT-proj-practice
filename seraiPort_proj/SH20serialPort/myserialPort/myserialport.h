@@ -17,7 +17,7 @@ public:
 
     MyserialPort(
                    QString name,
-                   qint32 baudRate = 9600,
+                   qint32 baudRate = 4800,
                    QSerialPort::DataBits dbits = QSerialPort::Data8,
                    QSerialPort::Parity parity = QSerialPort::NoParity,
                    QSerialPort::StopBits sbits = QSerialPort::OneStop,
