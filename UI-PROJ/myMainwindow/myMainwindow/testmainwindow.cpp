@@ -154,7 +154,7 @@ void testMainWindow::setText(const QString &string)
 }
 
 
-\
+
 void testMainWindow::showTextFrame()
 {
     QTextDocument *document = ui->myTextEdit->document();
