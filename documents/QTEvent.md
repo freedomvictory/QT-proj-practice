@@ -133,3 +133,41 @@ void keyTest::keyPressEvent(QKeyEvent *event)
 }
 ```
 
+## 定时器事件 
+
+
+```c++ 
+void timerEvent(QTimerEvent *event)
+``` 
+
+这个函数集中处理所有的定时器事件 
+
+
+```c++
+QTimer *timer = new QTimer(this);
+connect(timer, &QTimer::timeout, this, &Widget::timerUpdate);
+
+void Widget::timerUpdate()
+{
+    //TODO 
+
+}
+```
+timerUpdate 函数在`timer` 对应的定时器实例，定时溢出后，会触发。
+
+
+## 事件过滤器与事件的发送 
+
+```c++
+book eventFilter(QObject *obj, QEvent *event);
+```
+
+这个函数由widget类， 实现。 以处理定义事件。 
+
+```c++
+ui->textEdit->installEventFilter(this);
+ui->spinBox->installEventFilter(this);
+```
+但是在进行处理之前，必须给相应的部件安装事件过滤器 
+
+
