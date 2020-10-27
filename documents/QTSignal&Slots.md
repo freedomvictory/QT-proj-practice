@@ -67,3 +67,36 @@ void myDialog::on_pushButton_clicked()
 ```
 
 
+## 信号和槽传递自定义变量，实现方法 
+
+```c++
+
+//note: namespace 
+namespace  IPCUIDATA {
+   
+    struct TempFlowRealData{
+        QString valueBoxTemprature;
+        QString dectorTemprature;
+        QString auxHeatZoneTprue;
+        QString h2Flow;
+        QString airFlw;
+        QString carrierGasFlow;
+    };
+
+}
+Q_DECLARE_METATYPE(IPCUIDATA::TempFlowRealData)
+
+// sender 
+// signal defination  
+signals:
+    void uploadTempFlow(struct IPCUIDATA::TempFlowRealData data);
+
+// receiver 
+// slots defination 
+public slots:
+   void showTempFlowRealVal(struct IPCUIDATA::TempFlowRealData data);
+
+//connect:略 
+
+
+```
