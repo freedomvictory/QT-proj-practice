@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::myDialog *ui;
+
+signals:
+    void dlgReturn(int); //customize signals
+
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // MYDIALOG_H

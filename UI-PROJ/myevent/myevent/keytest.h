@@ -2,7 +2,7 @@
 #define KEYTEST_H
 
 #include <QWidget>
-
+#include <QKeyEvent>
 namespace Ui {
 class keyTest;
 }
@@ -14,6 +14,10 @@ class keyTest : public QWidget
 public:
     explicit keyTest(QWidget *parent = nullptr);
     ~keyTest();
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 
 private:
     Ui::keyTest *ui;

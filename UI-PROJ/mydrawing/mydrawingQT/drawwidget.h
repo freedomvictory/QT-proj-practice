@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::drawWidget *ui;
+
+protected:
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif // DRAWWIDGET_H

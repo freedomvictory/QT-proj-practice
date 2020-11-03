@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::mainWidget *ui;
+
+private slots:
+    void showValue(int value);
 };
 
 #endif // MAINWIDGET_H

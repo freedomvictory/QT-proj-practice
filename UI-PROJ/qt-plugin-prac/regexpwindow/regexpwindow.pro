@@ -29,7 +29,8 @@ SOURCES += \
         mywidget.cpp
 
 HEADERS += \
-        mywidget.h
+        mywidget.h \
+    regexpinterface.h
 
 FORMS += \
         mywidget.ui

@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::myWidget *ui;
+
+private slots:
+    void userChanged(QString);
+
 };
 
 #endif // MYWIDGET_H

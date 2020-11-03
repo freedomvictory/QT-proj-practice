@@ -1,24 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>myMainWindow</class>
- <widget class="QMainWindow" name="myMainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="myMainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>723</width>
+    <height>354</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>myMainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+/*****背景图片******/
+        background-image: url(:/image/beijing01.png);
+}
+
+/*********************按钮部件*******************/
+QPushButton{
+/*背景色*/
+        background-color: rgba(100, 225, 100, 30);
+/*边框样式*/
+        border-style: outset;
+/*边框宽度为4像素*/
+        border-width: 4px;
+/*边框圆角半径*/
+        border-radius: 10px;
+/*边框颜色*/
+        border-color: rgba(255,225,255,30);
+/*字体*/
+        font:bold 14px;
+/*字体颜色*/
+        color: rgba(0,0,0,100);
+/*填衬*/
+        padding: 6px;
+}
+
+/**************鼠标悬停在按钮上时***************/
+QPushButton:hover{
+        background-color: rgba(100, 255, 100, 100);
+	border-color: rgba(255, 255, 255, 200);
+	color: rgba(0, 0, 0, 100);
+}
+
+/****************按钮被按下时***************/
+QPushButton:pressed{
+        background-color: rgba(100, 255, 100, 200);
+	border-color: rgba(255, 255, 255, 30);
+	border-style: inset;
+	color: rgba(0, 0, 0, 100);
+}
+
+/****************滑块部件***************/
+/*水平滑块的手柄*/
+QSlider::handle:horizontal{
+        image: url(:/image/sliderHandle.png);
+}
+QSlider::sub-page:horizontal{
+/*边框图片*/
+        border-image: url(:/image/slider.png);
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>37</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSlider">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>180</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>723</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

@@ -6,6 +6,13 @@ myMainWindow::myMainWindow(QWidget *parent) :
     ui(new Ui::myMainWindow)
 {
     ui->setupUi(this);
+    //ui->pushButton->setStyleSheet("background:yellow");
+    //ui->horizontalSlider->setStyleSheet("background:blue");
+
+    //setStyleSheet("QPushButton{background:yellow}QSlider{background:blue}");
+
+
+
 }
 
 myMainWindow::~myMainWindow()

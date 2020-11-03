@@ -6,6 +6,7 @@
 
 QT       += core gui
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = myevent
@@ -26,13 +27,18 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mywidget.cpp
+        mywidget.cpp \
+    mylineedit.cpp \
+    keytest.cpp
 
 HEADERS += \
-        mywidget.h
+        mywidget.h \
+    mylineedit.h \
+    keytest.h
 
 FORMS += \
-        mywidget.ui
+        mywidget.ui \
+    keytest.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

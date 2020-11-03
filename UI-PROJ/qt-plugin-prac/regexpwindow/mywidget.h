@@ -2,6 +2,7 @@
 #define MYWIDGET_H
 
 #include <QWidget>
+#include "regexpinterface.h"
 
 namespace Ui {
 class myWidget;
@@ -17,6 +18,12 @@ public:
 
 private:
     Ui::myWidget *ui;
+    RegExpInterface *regexpInterface;
+    bool loadPlugin();
+
+private slots:
+    void on_pushButton_clicked();
+
 };
 
 #endif // MYWIDGET_H

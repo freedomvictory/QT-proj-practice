@@ -8,6 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+
 TARGET = myObjModel
 TEMPLATE = app
 
@@ -26,13 +27,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwidget.cpp
+        mainwidget.cpp \
+    mydialog.cpp
 
 HEADERS += \
-        mainwidget.h
+        mainwidget.h \
+    mydialog.h
 
 FORMS += \
-        mainwidget.ui
+        mainwidget.ui \
+    mydialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
