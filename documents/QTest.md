@@ -54,3 +54,33 @@ QTEST_MAIN(TestQString)
 ## more 
 
 `https://doc-snapshots.qt.io/qt5-5.9/qtest-overview.html`
+
+## So import about event loop 
+
+The QT event loop needs `QCoreApplication::exec()` support , but on `QTest`, There was no code called `QCoreApplication::exec()`. That means, If you want to test asynchronous calls like `m_socket->connectToHost()`. The Qtest function will can't receive any signal. and test will be fail. 
+
+So , how did solve this problem.
+
+
+>using QSignalSpy
+
+Look at the following example 
+
+```c++
+void CommunicationProtocolTest::testConnectToCammera()
+{
+    //spy will drag the singal you want 
+   QSignalSpy spy(communicationProtocol->m_socket, SIGNAL(connected()));
+    communicationProtocol->connectToCamera();
+
+    // wait returns true if 1 or more signals was emitted
+    QCOMPARE(spy.wait(250), true);
+
+    // You can be pedantic here and double check if you want
+    QCOMPARE(spy.count(), 1);
+}
+```
+
+Refer to [stackoverflow](https://stackoverflow.com/questions/21606125/qt-event-loop-and-unit-testing) and 
+[qt.io](https://doc.qt.io/qt-5/qsignalspy.html)
+
