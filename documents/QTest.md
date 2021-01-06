@@ -84,3 +84,14 @@ void CommunicationProtocolTest::testConnectToCammera()
 Refer to [stackoverflow](https://stackoverflow.com/questions/21606125/qt-event-loop-and-unit-testing) and 
 [qt.io](https://doc.qt.io/qt-5/qsignalspy.html)
 
+## qt sleep function  
+
+
+>`QTest::qSleep(int ms)`
+
+Sleeps for *ms* milliseconds, blocking execution of the test. `qSleep()` will not do any event processing and leave your test unresponsive. Network communication might time out while sleeping. 
+
+
+>`QTest::qWait()`
+
+Waits for *ms* milliseconds, While waiting , events will be processed and your test will stay responsive to user interface events or network communication.
