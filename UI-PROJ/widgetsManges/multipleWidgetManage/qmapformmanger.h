@@ -2,6 +2,7 @@
 #define QMAPFORMMANGER_H
 
 #include <QObject>
+#include <QMap>
 
 class QMapFormManger : public QObject
 {
@@ -12,6 +13,12 @@ public:
 signals:
 
 public slots:
+    void GO_A();
+    void GO_B();
+    void GO_C();
+
+private:
+    QMap<QString, QWidget*> mywidgets;
 };
 
 #endif // QMAPFORMMANGER_H

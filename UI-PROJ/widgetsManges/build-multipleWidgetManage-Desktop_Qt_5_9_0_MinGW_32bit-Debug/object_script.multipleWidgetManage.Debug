@@ -1,0 +1,13 @@
+INPUT(
+./debug/main.o
+./debug/mainwidget.o
+./debug/bform.o
+./debug/cform.o
+./debug/windowmanger.o
+./debug/qmapformmanger.o
+./debug/moc_mainwidget.o
+./debug/moc_bform.o
+./debug/moc_cform.o
+./debug/moc_windowmanger.o
+./debug/moc_qmapformmanger.o
+);

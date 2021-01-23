@@ -2,6 +2,9 @@
 #define WINDOWMANGER_H
 
 #include <QObject>
+#include <QWidget>
+#include <QStackedWidget>
+
 
 class WindowManger : public QObject
 {
@@ -9,9 +12,16 @@ class WindowManger : public QObject
 public:
     explicit WindowManger(QObject *parent = nullptr);
 
-signals:
+private:
+
+    QStackedWidget *myQStackW = new QStackedWidget();
+
 
 public slots:
+
+    void GO_A();
+    void GO_B();
+    void GO_C();
 };
 
 #endif // WINDOWMANGER_H

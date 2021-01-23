@@ -12,3 +12,8 @@ CForm::~CForm()
 {
     delete ui;
 }
+
+void CForm::on_pushButton_A_clicked()
+{
+    emit go_aForm();
+}

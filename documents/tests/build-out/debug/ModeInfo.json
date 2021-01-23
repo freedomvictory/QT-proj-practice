@@ -1,0 +1,35 @@
+{
+    "AirPurgeArg": {
+        "mode": 0,
+        "time": 5
+    },
+    "BasicFlows": {
+        "CarrierGas": 16,
+        "air": 220,
+        "hydrogen": 45
+    },
+    "BasicTempratures": {
+        "catalyticConverter": 180,
+        "decetor": 180
+    },
+    "CatalyticActivation": {
+        "temprature": 240,
+        "time": 180
+    },
+    "Fire": {
+        "NumOfAttempts": 6,
+        "threshold": 8
+    },
+    "sampleAnalysisEvents": [
+        {
+            "action": "on",
+            "dev": "bigPump",
+            "time": 0.02
+        },
+        {
+            "action": "off",
+            "dev": "smallPump",
+            "time": 0.04
+        }
+    ]
+}

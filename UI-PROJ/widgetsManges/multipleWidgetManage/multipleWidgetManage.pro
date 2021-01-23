@@ -25,10 +25,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwidget.cpp
+        mainwidget.cpp \
+    bform.cpp \
+    cform.cpp \
+    windowmanger.cpp \
+    qmapformmanger.cpp
 
 HEADERS += \
-        mainwidget.h
+        mainwidget.h \
+    bform.h \
+    cform.h \
+    windowmanger.h \
+    qmapformmanger.h
 
 FORMS += \
-        mainwidget.ui
+        mainwidget.ui \
+    bform.ui \
+    cform.ui

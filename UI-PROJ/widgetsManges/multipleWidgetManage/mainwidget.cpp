@@ -6,9 +6,19 @@ mainWidget::mainWidget(QWidget *parent) :
     ui(new Ui::mainWidget)
 {
     ui->setupUi(this);
+
+
+
+
+
 }
 
 mainWidget::~mainWidget()
 {
     delete ui;
+}
+
+void mainWidget::on_pushButton_B_clicked()
+{
+    emit GO_B();
 }

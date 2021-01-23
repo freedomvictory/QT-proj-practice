@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run qmake",
+            "type": "shell",
+            "command": "qmake.exe ${workspaceFolder}/tests.pro",
+            "args": [
+                "-spec",
+                "win32-g++",
+                "CONFIG+=DEBUG",
+                "CONFIG+=qml_debug"
+            ],
+            "options": {
+                "cwd": "build-out"
+            }
+        },
+        {
+            "label": "Run make",
+            "type": "shell",
+            "command": "mingw32-make.exe -f ${workspaceFolder}\\build-out\\Makefile.Debug",
+            "options": {
+                "cwd": "build-out"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Clear build folder",
+            "type": "shell",
+            "command": "mingw32-make.exe -f ${workspaceFolder}\\build-out\\Makefile.Debug clean",
+            "options": {
+                "cwd": "build-out"
+            }
+        }
+    ]
+}

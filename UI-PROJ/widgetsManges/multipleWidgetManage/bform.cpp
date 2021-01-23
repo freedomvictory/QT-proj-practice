@@ -12,3 +12,8 @@ BForm::~BForm()
 {
     delete ui;
 }
+
+void BForm::on_pushButton_C_clicked()
+{
+    emit go_cForm();
+}

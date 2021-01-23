@@ -15,8 +15,19 @@ public:
     explicit BForm(QWidget *parent = 0);
     ~BForm();
 
+signals:
+
+    void go_cForm();
+
+
+
+
 private:
     Ui::BForm *ui;
+
+public slots:
+
+    void on_pushButton_C_clicked();
 };
 
 #endif // BFORM_H

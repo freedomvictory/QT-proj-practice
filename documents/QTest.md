@@ -95,3 +95,9 @@ Sleeps for *ms* milliseconds, blocking execution of the test. `qSleep()` will no
 >`QTest::qWait()`
 
 Waits for *ms* milliseconds, While waiting , events will be processed and your test will stay responsive to user interface events or network communication.
+
+## QTEST SKIP function 
+
+>`QSKIP()`
+
+由测试函数调用。用来停止此测试函数的执行。也就是说可忽略此测试函数，执行下一个。 

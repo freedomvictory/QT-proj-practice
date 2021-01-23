@@ -1,0 +1,15 @@
+{
+    "appDesc": {
+        "description": "SomeDescription",
+        "message": "SomeMessage"
+    },
+    "appName": {
+        "description": "WRITE IT!",
+        "imp": [
+            "awesome",
+            "best",
+            "good"
+        ],
+        "message": "Welcome"
+    }
+}

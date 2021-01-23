@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name":"hello",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"qdatetime": "cpp",
+			"qstringlist": "cpp"
+		}
+	}
+}

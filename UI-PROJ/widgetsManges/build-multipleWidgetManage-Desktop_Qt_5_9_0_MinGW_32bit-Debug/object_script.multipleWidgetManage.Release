@@ -1,0 +1,13 @@
+INPUT(
+./release/main.o
+./release/mainwidget.o
+./release/bform.o
+./release/cform.o
+./release/windowmanger.o
+./release/qmapformmanger.o
+./release/moc_mainwidget.o
+./release/moc_bform.o
+./release/moc_cform.o
+./release/moc_windowmanger.o
+./release/moc_qmapformmanger.o
+);

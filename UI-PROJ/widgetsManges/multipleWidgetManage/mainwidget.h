@@ -17,6 +17,15 @@ public:
 
 private:
     Ui::mainWidget *ui;
+
+signals:
+    void GO_B();
+
+public slots:
+    void on_pushButton_B_clicked();
+
+
+
 };
 
 #endif // MAINWIDGET_H
