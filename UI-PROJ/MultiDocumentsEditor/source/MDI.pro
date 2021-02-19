@@ -1,4 +1,4 @@
-QT += core testlib 
+QT += core gui 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -10,11 +10,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 CONFIG += application
+CONFIG += console 
+INCLUDEPATH += ./header/
 
 
 application {
-    SOURCES += 
-    HEADERS += 
+    SOURCES += src/main.cpp \
+               src/mainwindow.cpp \
+               src/mdichild.cpp 
+
+    HEADERS += header/mdichild.h \
+               header/mainwindow.h
+    FORMS += UI/mainwindow.ui
+    RESOURCES += resource/myImage.qrc   
 }
 
 

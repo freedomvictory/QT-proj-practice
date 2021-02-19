@@ -11,27 +11,30 @@ class MdiChild : public QTextEdit
     Q_OBJECT
 public:
     explicit MdiChild(QWidget *parent = 0);
-    void newFile();
-    bool loadFile(const QString &fileName);
-    bool save();
-    bool saveAs();
+    void newFile();                         // new file operation 
+    bool loadFile(const QString &fileName); // load file operation 
+    bool save();                            // save file operation 
+    bool saveAs();                          // save as operation 
     bool saveFile(const QString &fileName);
     QString userFriendlyCurrentFile(); 
-    QString currentFile() {return curFile;};
+    QString currentFile() const {return curFile;};
     
 
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void contextMenuEvent(QContextMenuEvent* e);
 
 private slots:
-    void documentWasModified(); 
+    void documentWasModified();             // show change status flag when the document was modified 
 
 private:
 
+    bool maybeSave();   //whether the document need to save
     void setCurrentFile(const QString &fileName);
-
+    /*current file path*/
     QString curFile; 
+    /*whether file is already saved on the disk*/
     bool isUntitled;
     
 

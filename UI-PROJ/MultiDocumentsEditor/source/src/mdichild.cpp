@@ -5,11 +5,14 @@
 #include <QFileInfo> 
 #include <QApplication> 
 #include <QFileDialog>
-
+#include <QPushButton>
+#include <QMenu>
 
 //TODO: CloseEvent and maybeSave() 
 
-
+/*
+construct function:
+*/
 MdiChild::MdiChild(QWidget *parent)
 :QTextEdit(parent)
 {
@@ -53,8 +56,8 @@ void MdiChild::setCurrentFile(const QString &fileName)
     //cut the symbolic link of path 
     curFile = QFileInfo(fileName).canonicalFilePath();
     isUntitled = false; 
-    setWindowModified(false);
-    setWindowTitle(userFriendlyCurrentFile() + "[*]");
+    setWindowModified(false); // the widget don't show change status 
+    setWindowTitle(userFriendlyCurrentFile() + "[*]"); // why not add `- multiple documents editor`
 }
 
 bool MdiChild::save()
@@ -100,15 +103,71 @@ QString MdiChild::userFriendlyCurrentFile()
 
 void MdiChild::closeEvent(QCloseEvent *event)
 {
-
+    if(maybeSave()) 
+        event->accept(); 
+    else 
+        event->ignore();
 }
 
+bool MdiChild::maybeSave()
+{
+    if(document()->isModified())
+    {
+        QMessageBox box;
+        box.setWindowTitle(tr("multiple document editor"));
+        box.setText(tr("Whether save the change of '%1' ?").arg(userFriendlyCurrentFile()));
+        box.setIcon(QMessageBox::Warning);
+        QPushButton *yesBtn = box.addButton(tr("YES(&N)"), QMessageBox::YesRole);
+        box.addButton(tr("NO(&N)"), QMessageBox::NoRole);
+        QPushButton *cancelBtn = box.addButton(tr("Cancle"), QMessageBox::RejectRole);
+
+        box.exec();
+        if ( box.clickedButton() == yesBtn)
+            return save(); 
+        else if(box.clickedButton() == cancelBtn)
+            return false;
+    }
+    return true; 
+}
 void MdiChild::documentWasModified()
 {
     //accroding whether the document is modified, and setting the window titile (changed and unsave)
     setWindowModified(document()->isModified());
 }
 
+
+void MdiChild::contextMenuEvent(QContextMenuEvent *e)
+{
+    //TODO: 
+    QMenu *menu = new QMenu;
+    QAction *undo = menu->addAction(tr("undo(&U)"), this, SLOT(undo()), QKeySequence::Undo);
+    undo->setEnabled(document()->isUndoAvailable());
+
+    QAction *redo = menu->addAction(tr("redo(&R)"),this,
+                                    SLOT(redo()),QKeySequence::Redo);
+    redo->setEnabled(document()->isRedoAvailable());
+    menu->addSeparator();
+    QAction *cut = menu->addAction(tr("cut(&T)"),this,
+                                   SLOT(cut()),QKeySequence::Cut);
+    cut->setEnabled(textCursor().hasSelection());
+    QAction *copy = menu->addAction(tr("copy(&C)"),this,
+                                    SLOT(copy()),QKeySequence::Copy);
+    copy->setEnabled(textCursor().hasSelection());
+    menu->addAction(tr("paste(&P)"),this,SLOT(paste()),QKeySequence::Paste);
+    QAction *clear = menu->addAction(tr("clear"),this,SLOT(clear()));
+    clear->setEnabled(!document()->isEmpty());
+    menu->addSeparator();
+    QAction *select = menu->addAction(tr("select all"),this,
+                                SLOT(selectAll()),QKeySequence::SelectAll);
+    select->setEnabled(!document()->isEmpty());
+
+
+    menu->exec(e->globalPos());
+    delete menu;
+
+
+
+}
 
 
 

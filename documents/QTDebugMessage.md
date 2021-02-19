@@ -47,3 +47,11 @@ int main( int argc, char * argv[] )
 }
 ```
 
+# on widget application use qDebug() 
+
+You should add following line on your pro file,then rebuild your project 
+
+```
+CONFIG+=console 
+```
+

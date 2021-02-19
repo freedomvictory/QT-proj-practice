@@ -1,15 +1,15 @@
-QT += core testlib 
+QT += core testlib sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
-TARGET = TESTS 
+TARGET = Test 
 
 TEMPLATE = app 
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
-CONFIG += testJSON
+CONFIG += word
 
 testQString {
     SOURCES += QString/testQstring.cpp 
@@ -21,6 +21,17 @@ testJSON {
     HEADERS += 
 }
 
+testSQL {
+    SOURCES += QSQL/testSqlStatement.cpp 
+    HEADERS += 
+}
+
+word {
+    QT += axcontainer 
+    SOURCES += Word/main.cpp \
+               Word/wordengine.cpp 
+    HEADERS += Word/wordengine.h 
+}
 
 
 # Default rules for deployment.
