@@ -16,6 +16,10 @@
         "streambuf": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
-        "qdebug": "cpp"
+        "qdebug": "cpp",
+        "qtxml": "cpp",
+        "qtxmldepends": "cpp",
+        "qtcore": "cpp",
+        "new": "cpp"
     }
 }

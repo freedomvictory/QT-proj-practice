@@ -211,7 +211,6 @@ Makefile: ../tests.pro C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/win32-g++/qmake.conf
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/console.prf \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/opengl.prf \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/uic.prf \
-		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/qmake_use.prf \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/file_copies.prf \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/testcase_targets.prf \
@@ -220,8 +219,6 @@ Makefile: ../tests.pro C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/win32-g++/qmake.conf
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/lex.prf \
 		../tests.pro \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5PrintSupport.prl \
-		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5AxContainer.prl \
-		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5AxBase.prl \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Test.prl \
@@ -377,7 +374,6 @@ C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/testlib_defines.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/console.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/opengl.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/uic.prf:
-C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/qmake_use.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/file_copies.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/testcase_targets.prf:
@@ -386,8 +382,6 @@ C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/mkspecs/features/lex.prf:
 ../tests.pro:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5PrintSupport.prl:
-C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5AxContainer.prl:
-C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5AxBase.prl:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.9.0/5.9/mingw53_32/lib/Qt5Test.prl:

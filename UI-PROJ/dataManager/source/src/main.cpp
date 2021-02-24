@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    if(!createConnection())
+    if(!createConnection() || !createXml() )
         return 0;
     mainWidget w;
     w.show();

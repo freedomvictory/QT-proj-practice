@@ -3,7 +3,7 @@
 
 #include <QtSql> 
 #include <QDebug> 
-
+#include <QtXml> 
 
 static bool createConnection()
 {
@@ -41,8 +41,28 @@ static bool createConnection()
 
     return true; 
 }
+//create xml file 
+static bool createXml() 
+{
+    QFile file("data.xml");
+    if(file.exists())
+        return true; 
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        return false;
+    //construct QDomDocument  
+    QDomDocument doc; 
+    QDomProcessingInstruction instruction; 
+    instruction = doc.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
+    doc.appendChild(instruction);
+    QDomElement root = doc.createElement(QString("日销售清单"));
+    doc.appendChild(root); 
+    //save QDomDocument to file 
+    QTextStream out(&file); 
+    doc.save(out, 4);
+    file.close(); 
 
-
+    return true; 
+}
 
 
 

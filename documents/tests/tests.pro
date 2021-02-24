@@ -9,7 +9,7 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
-CONFIG += word
+CONFIG += testThread 
 
 testQString {
     SOURCES += QString/testQstring.cpp 
@@ -22,8 +22,8 @@ testJSON {
 }
 
 testSQL {
-    SOURCES += QSQL/testSqlStatement.cpp 
-    HEADERS += 
+    SOURCES += QSQL/testSqlModel.cpp 
+    HEADERS += QSQL 
 }
 
 word {
@@ -31,6 +31,11 @@ word {
     SOURCES += Word/main.cpp \
                Word/wordengine.cpp 
     HEADERS += Word/wordengine.h 
+}
+
+testThread {
+    SOURCES += QThread/threadRelevance.cpp 
+    HEADERS += 
 }
 
 
