@@ -34,10 +34,13 @@ word {
 }
 
 testThread {
-    SOURCES += QThread/threadRelevance.cpp 
+    SOURCES += QThread/subClassThread.cpp 
     HEADERS += 
 }
-
+testXML {
+    SOURCES += xml/testXmlWriter.cpp 
+    HEADERS += 
+}
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

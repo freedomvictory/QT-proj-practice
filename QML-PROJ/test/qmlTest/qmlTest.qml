@@ -7,10 +7,15 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
+    function say(text){
+       console.log("you said:" + text);
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
+            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'));
+            say("Mouse clicked");
         }
     }
 

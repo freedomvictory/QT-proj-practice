@@ -8,7 +8,6 @@ class MyThread: public QThread
 {
 public:
     explicit MyThread();
-
 protected:
     void run() override;
 private:
@@ -34,10 +33,8 @@ void MyThread::run()
 class TestThread: public QObject 
 {
     Q_OBJECT
-
 private slots:
     void runThread(); 
-
 };
 
 void TestThread::runThread()
