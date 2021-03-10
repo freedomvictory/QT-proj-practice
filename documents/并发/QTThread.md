@@ -83,3 +83,70 @@ void TestThread::runThread()
 https://mp.weixin.qq.com/s/CPS68Vo-lUztAF5tbiDIKg
 ## `QThread` 实现线程间通信
 
+
+线程间通信方式，目前分为2种。非阻塞方式的通信，阻塞方式的通信 
+
+目前Qt可以通过信号与槽或者事件发布，实现非阻塞方式，跨线程通信 
+
+
+
+`QApplication::PostEvent` 用于发送事件给其他线程内的对象 
+
+简言之就是发送线程，调用 `QApplication::PostEvent` 发布事件到接收线程的接收者对象。 由接收者对象在事件处理函数中，做事件的处理。 由此实现来线程间的非阻塞通信。 
+
+实例请参考 安老师写的 `doorbell` 的例子
+`/cygdrive/e/Documents/code/c++/Qt-proj-practice/UI-PROJ/smallExamples/doorbell`
+
+
+
+
+
+
+
+
+
+
+## `QThread` Read Write Lock 
+
+
+如果读的那一方 和 写的那一方 同时等待锁时，写的那一方优先。简而言之 写的那一方有更高的优先级。 
+
+多线程可以同时读，但是写的时候，只能一个线程去写 
+
+写的那一方何时才能使用锁 
+    任何一个线程没有占用读写锁。 不管是读还是写 
+
+读的那一方何时才能使用锁 
+    任何一个线程没有占用读写锁用于写。 
+    如果有线程占用读写锁用于读，此时读的线程是可以再次可以获得锁，用于读的 （前提是没有写的那一方与它抢占锁）
+
+
+## `QSemphore`
+
+信号量可用于管理多个相同类型的资源。 比方说是一个循环Buffer. A线程要去写buffer, B线程要去读A写了之后的buffer的内容. A和B类似于生产者和消费者。 buffer是一个字节数组。 假定字节数组中每个 `byte` 都是一个资源的话。 `Semphore` 可用于计算buffer 中 `byte` 资源的个数。
+A线程和B线程，会操作信号量，申请资源和释放资源。 
+
+请参考示例
+
+[semphore example](https://doc.qt.io/qt-5/qtcore-threads-semaphores-example.html)
+
+
+
+
+## `QWaitCondition`
+
+条件变量。 多个线程之间并行运行。一个线程与审查某些条件，其他线程等待条件满足，做一些事情。 第一个线程条件满足时，可发送信号给其他线程，其他线程不再阻塞可继续执行。 这种情况下，可以用条件变量来实现。 
+
+请参考实例 
+
+[wait condition example ](https://doc.qt.io/archives/qt-5.9/qtcore-threads-waitconditions-example.html)
+
+
+
+
+
+
+
+
+
+

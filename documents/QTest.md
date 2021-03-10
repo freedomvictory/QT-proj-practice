@@ -101,3 +101,12 @@ Waits for *ms* milliseconds, While waiting , events will be processed and your t
 >`QSKIP()`
 
 由测试函数调用。用来停止此测试函数的执行。也就是说可忽略此测试函数，执行下一个。 
+
+
+## GUI event test 
+
+
+样例 
+
+`E:\Documents\code\c++\Qt-proj-practice\UI-PROJ\smallExamples\testUiEventSample\myWindowWithTest`
+
