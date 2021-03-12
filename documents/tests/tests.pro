@@ -9,7 +9,7 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
-CONFIG += testThread 
+CONFIG += testSmartPointer 
 
 testQString {
     SOURCES += QString/testQstring.cpp 
@@ -39,6 +39,10 @@ testThread {
 }
 testXML {
     SOURCES += xml/testXmlWriter.cpp 
+    HEADERS += 
+}
+testSmartPointer {
+    SOURCES += smartPointer/weakPointer.cpp 
     HEADERS += 
 }
 
