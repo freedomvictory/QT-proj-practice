@@ -86,6 +86,9 @@ void QAbstractItemModel::dataChanged(const QModelIndex &topLeft, const QModelInd
 
 ### 3.3 delegate 
 
-用于单个特定项目，如一个单元格数据的展示和编辑， 不同于非常规的效果 
+用于单个特定项目，如一个单元格数据的展示和编辑， 不同于非常规的效果 。
+如一个单元格，你想展示一个漂亮的控件。一个特定的图形，编辑也想要不同的效果，那就用委托。 
+
+继承 `**ItemDelegate` 基类，自己实现 `painter()`, `createEditor()`, `setEditorData` 和 `setModelData()` 等方法。 这些方法基本上都是`override`
 
 `https://doc.qt.io/archives/qt-5.9/qtwidgets-itemviews-stardelegate-example.html` 这个例子展示了 `delegate` 的用法 

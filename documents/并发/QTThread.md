@@ -20,10 +20,13 @@
 
 所谓线程关联，就是一个线程所持有的对象，要想使用的话。必须关联到这个新`Thread`上 。也就是说这个对象必须在使用线程下创建和使用。如果不这样做的话，将会出现错误。 
 
-如下实例，我们有一个`MyThread` ,这个Thread 运行的时候，会启动一个定时器。 `MyThread` 中有一个私有变量 `m_timer`, 在`MyThread` 构造函数当中，我们必须用 `m_timer.moveToThread()` 来吧 `m_timer` 变量，绑定到这个线程上。 如果不这样做，运行时将会报如下错误。 
+如下实例，我们有一个`MyThread` ,这个Thread 运行的时候，会启动一个定时器。 `MyThread` 中有一个私有变量 `m_timer`, 在`MyThread` 构造函数当中，我们必须用 `m_timer.moveToThread()` 来吧 `m_timer` 变量，绑定到这个线程上。 如果不这样做，运行时将会报如下错误。
 ```
 QWARN  : TestThread::runThread() QObject::startTimer: Timers canot be started from another thread
-```
+``` 
+
+**注意：**<br/> 一个对象要移动到另一个线程。 那么这个对象包含的部件对象(`QObject`派生类实例)，特别是指针对象，一定要是这个对象的孩子。否则这个部件对象，是无法移动到新线程的。(可能是一个 `QTimer`) ,要特别注意 
+
 
 ```c++
 class MyThread: public QThread 
